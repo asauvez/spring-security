@@ -363,6 +363,9 @@ public abstract class AbstractRememberMeServices implements RememberMeServices,
 		logger.debug("Cancelling cookie");
 		Cookie cookie = new Cookie(cookieName, null);
 		cookie.setMaxAge(0);
+		if (cookieDomain != null) {
+			cookie.setDomain(cookieDomain);
+		}
 		cookie.setPath(getCookiePath(request));
 
 		response.addCookie(cookie);
